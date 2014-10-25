@@ -5,6 +5,7 @@
     <script src="sockjs-0.3.4.js"></script>
     <script src="stomp.js"></script>
     <script type="text/javascript">
+    
         var stompClient = null;
         
         function setConnected(connected) {
@@ -16,11 +17,24 @@
         
         function connect() {
             var socket = new SockJS('/hello');
-            stompClient = Stomp.over(socket);            
+            socket.onopen = function() { console.log('sockjs: open'); };
+            socket.onmessage = function(e) { console.log('sockjs.message', e.data); };
+            socket.onclose = function() { console.log('sockjs.close'); };
+            
+            stompClient = Stomp.over(socket);     
             stompClient.connect({}, function(frame) {
                 setConnected(true);
                 console.log('Connected: ' + frame);
-                stompClient.subscribe('/topic/greetings', function(greeting){
+                stompClient.subscribe('/player/greetings', function(greeting){
+                    showGreeting(JSON.parse(greeting.body).content);
+                });
+                stompClient.subscribe('/player/addSong', function(greeting){
+                    showGreeting(JSON.parse(greeting.body).content);
+                });
+                stompClient.subscribe('/player/stopCurrent', function(greeting){
+                    showGreeting(JSON.parse(greeting.body).content);
+                });
+                stompClient.subscribe('/player/pauseCurrent', function(greeting){
                     showGreeting(JSON.parse(greeting.body).content);
                 });
             });
@@ -36,7 +50,19 @@
             var name = document.getElementById('name').value;
             stompClient.send("/app/hello", {}, JSON.stringify({ 'name': name }));
         }
-        
+
+        function stopSong() {
+            stompClient.send("/app/stop", {}, JSON.stringify({ 'name': name }));
+        }
+        function pauseSong() {
+            stompClient.send("/app/pause", {}, JSON.stringify({ 'name': 'name' }));
+        }
+
+        function addSong() {
+            stompClient.send("/app/addSong", {}, JSON.stringify({ 'name': 'name' }));
+        } 
+
+
         function showGreeting(message) {
             var response = document.getElementById('response');
             var p = document.createElement('p');
@@ -57,8 +83,17 @@
     <div id="conversationDiv">
         <label>What is your name?</label><input type="text" id="name" />
         <button id="sendName" onclick="sendName();">Send</button>
-        <p id="response"></p>
     </div>
+    <div class="conversationDiv">
+        <button id="stopSong" onclick="stopSong();">Stop</button>
+    </div>
+    <div class="conversationDiv">
+        <button id="pauseSong" onclick="pauseSong();">Pause</button>
+    </div>
+    <div class="conversationDiv">
+        <button id="addSong" onclick="addSong();">Add</button>
+    </div>
+    <p id="response"></p>
 </div>
 </body>
 </html>
