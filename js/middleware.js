@@ -63,8 +63,10 @@ ClientStore.prototype.errorHandler = function(error){
 	}
 	console.log(message);
 };
-ClientStore.prototype.save = function(filename, content){
+ClientStore.prototype.save = function(filename, content, mimeType){
 	var self = this;
+	var mType = mimeType || 'audio/mpeg'; //'text/plain'
+	
 	self.filesystem.root.getFile(filename, {create: true}, function(fileEntry) {
 
     fileEntry.createWriter(function(fileWriter) {
@@ -77,8 +79,7 @@ ClientStore.prototype.save = function(filename, content){
       fileWriter.onerror = function(e) {
         console.error('Write error: ' + e.toString());
       };
-
-      var contentBlob = new Blob([content], {type: 'text/plain'});
+      var contentBlob = new Blob([content], {type: mType});
 
       fileWriter.write(contentBlob);
     }, self.errorHandler);
