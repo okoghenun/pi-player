@@ -19,3 +19,7 @@ docs/public/*
 .settings
 .project
 tmp
+pi-player-service/target
+pi-player-service/.settings
+pi-player-service/.project
+pi-player-service/.classpath
