@@ -19,3 +19,4 @@ docs/public/*
 .settings
 .project
 tmp
+client/*.mp3

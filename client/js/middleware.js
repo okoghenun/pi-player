@@ -6,11 +6,6 @@ var guid = function(){
 	});
 };
 
-var getMeta = function(){
-	
-};
-
-
 // Allow for vendor prefixes.
 window.requestFileSystem = window.requestFileSystem ||
                            window.webkitRequestFileSystem;
@@ -19,9 +14,9 @@ var ClientStore = function(){
 		var self = this;
 		self.filesystem = null;
 		
-		navigator.webkitPersistentStorage.requestQuota(1024 * 1024 * 5, function(grantedSize) {
+		navigator.webkitPersistentStorage.requestQuota(1024 * 1024 * 300, function(grantedSize) {
 			// Request a file system with the new size.
-			window.requestFileSystem(window.PERSISTENT, grantedSize, function(fs) {
+			window.requestFileSystem(window.TEMPORARY, grantedSize, function(fs) {
 				// Set the filesystem variable.
 				self.filesystem = fs;
 
@@ -138,12 +133,51 @@ var Client = function(){
 
 var curClient = new Client();
 
-var Song = function(){
+var Song = function(file){
 	this.id = 's' + guid();
 	this.meta = {};
+	if(file && file.id){
+//		file from the server
+		this.id = file.id;
+		this.meta = file.meta;
+	}
+	else if(file){
+//		new file from me
+		this.file = file;
+		this.meta = this.getMeta(file);
+		cStore.save(this.id, this.getFile());
+	}
+};
+Song.getMeta = function(file){
+	var meta = {};
+	id3(file, function(err, tags) {
+		// tags now contains your ID3 tags
+		meta.title = tags.title || tags.v2.title;
+		meta.album = tags.album || tags.v2.album;
+		meta.artist = tags.artist || tags.v2.artist;
+		meta.genre = tags.genre || tags.v2.genre;
+		meta.duration = tags.duration || tags.v2.duration;
+		meta.year = tags.year || tags.v2.year;
+	});
+	
+	if(!meta.duration){
+		var objectUrl;
+		objectUrl = URL.createObjectURL(file);
+		var tempAudioObj = document.createElement('audio');
+		tempAudioObj.addEventListener('canplaythrough', function(e){
+			meta.duration = e.currentTarget.duration;
+			URL.revokeObjectURL(objectUrl);
+		});
+		tempAudioObj.setAttribute('src', objectUrl);
+	}
+	
+	return meta;
 };
 Song.prototype.getID = function(){
 	return this.id;
+};
+Song.prototype.getFile = function(){
+	return this.file;
 };
 
 var Playlist = function(){
@@ -165,6 +199,14 @@ Playlist.prototype.isPlaying = function(){
 };
 
 var curPlaylist = new Playlist();
+
+var socket = io('http://192.168.43.49:8080');
+socket.on('connect', function(){
+	socket.on('event', function(data){});
+	socket.on('disconnect', function(){});
+	socket.on('/player/addSong', function(data){console.log(data)});
+	console.log('Connected to socket! :D');
+});
 
 var dev = false;
 if(dev){ //open dev
@@ -220,6 +262,39 @@ socket.emit('stopCurrent');
 socket.emit('previousSong');
 socket.emit('nextSong');
 socket.emit('reorderPlaylist', {client: curClient, playlist: rePlaylist});
+	
+	
+var stompClient = null;
+
+function setConnected(connected) {
+//		document.getElementById('connect').disabled = connected;
+//		document.getElementById('disconnect').disabled = !connected;
+//		document.getElementById('conversationDiv').style.visibility = connected ? 'visible' : 'hidden';
+//		document.getElementById('response').innerHTML = '';
+}
+
+function connect() {
+		var socket = new SockJS('/hello');
+		stompClient = Stomp.over(socket);            
+		stompClient.connect({}, function(frame) {
+				setConnected(true);
+				console.log('Connected: ' + frame);
+				stompClient.subscribe('/topic/greetings', function(greeting){
+						return JSON.parse(greeting.body).content;
+				});
+		});
+}
+
+function disconnect() {
+		stompClient.disconnect();
+		setConnected(false);
+		console.log("Disconnected");
+}
+
+function sendName() {
+		var name = document.getElementById('name').value;
+		stompClient.send("/app/hello", {}, JSON.stringify({ 'name': name }));
+}
 	
 //close dev	
 }
