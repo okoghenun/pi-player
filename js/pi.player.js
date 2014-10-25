@@ -15,11 +15,9 @@
 //@prepros-append ../bower_components/foundation/js/foundation/foundation.tab.js
 //@prepros-append ../bower_components/foundation/js/foundation/foundation.joyride.js
 //@prepros-append ../bower_components/foundation/js/foundation/foundation.tooltip.js
-//@prepros-append ../bower_components/foundation/js/foundation/foundation.offcanvas.js
 
 
 //Other Plugins
 
 // App Declaration
 
-console.log('Welcome')
