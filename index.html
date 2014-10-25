@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" >
+
+<head>
+  <meta charset="utf-8">
+  <!-- If you delete this meta tag World War Z will become a reality -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pi Player</title>
+
+  <!--  -->
+  <link rel="stylesheet" href="css/pi.player.css">
+
+  <script src="js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+
+  <!-- body content here -->
+
+  <div class="off-canvas-wrap" data-offcanvas>
+    <div class="inner-wrap">
+      <nav class="tab-bar show-for-small-only">
+        <section class="left-small">
+          <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+        </section>
+
+        <section class="middle tab-bar-section">
+          <h1 class="title">Foundation</h1>
+        </section>
+
+        <section class="right-small">
+          <a class="add-button button tiny " href="#">Add a song</a>
+        </section>
+      </nav>
+
+      <nav class="top-bar show-for-medium-up" data-topbar role="navigation">
+        <ul class="title-area">
+           <li class="name">
+             <h1><a href="#">PI Player</a></h1>
+           </li>
+         </ul>
+
+         <section class="top-bar-section">
+           <ul class="left">
+             <li><a href="#"><strong>1234</strong> Songs on the playlist</a></li>
+             <li><a href="#"><strong>234</strong> Songs played</a></li>
+             <li><a href="#"><strong>34</strong> Listners</a></li>
+           </ul>
+
+           <ul class="right">
+             <li class="has-form show-for-medium-only"><a href="#" class="button">Add song</a></li>
+           </ul>
+         </section>
+      </nav>
+
+      <aside class="left-off-canvas-menu">
+        <ul class="off-canvas-list">
+          <li><label>Foundation</label></li>
+          <li><a href="#">The Psychohistorians</a></li>
+          <li><a href="#">...</a></li>
+        </ul>
+      </aside>
+
+      <aside class="right-off-canvas-menu">
+        <ul class="off-canvas-list">
+          <li><label>Users</label></li>
+          <li><a href="#">Hari Seldon</a></li>
+          <li><a href="#">...</a></li>
+        </ul>
+      </aside>
+
+      <section class="main-section">
+        <!-- content goes here -->
+
+        <!-- current playlist for large-displays -->
+        <aside class="current-playlist show-for-large-only medium-4 large-3 columns">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione esse accusamus placeat, tenetur dolorem vero facilis vitae maxime veniam, odio cumque sunt tempora optio ipsum incidunt, delectus, quam blanditiis fugiat.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum ut mollitia asperiores similique iusto quis, maxime ipsam labore nihil. Similique natus quaerat pariatur consequatur dolorem voluptatem nobis corporis consequuntur voluptatum.</p>
+        </aside>
+
+        <!-- current and now playing playlists for medium displays -->
+        <aside class="playlists show-for-medium-only medium-4 large-3 columns">
+          <section class="current-playlist">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione esse accusamus placeat, tenetur dolorem vero facilis vitae maxime veniam, odio cumque sunt tempora optio ipsum incidunt, delectus, quam blanditiis fugiat.
+
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum ut mollitia asperiores similique iusto quis, maxime ipsam labore nihil. Similique natus quaerat pariatur consequatur dolorem voluptatem nobis corporis consequuntur voluptatum.
+            </p>
+          </section>
+          <section class="your-paylist">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione esse accusamus placeat, tenetur dolorem vero facilis vitae maxime veniam, odio cumque sunt tempora optio ipsum incidunt, delectus, quam blanditiis fugiat.
+
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum ut mollitia asperiores similique iusto quis, maxime ipsam labore nihil. Similique natus quaerat pariatur consequatur dolorem voluptatem nobis corporis consequuntur voluptatum.
+            </p>
+          </section>
+        </aside>
+
+        <!-- playing section -->
+        <section class="playing small-12 medium-8 large-6 columns">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque mollitia, nam accusamus sapiente voluptatem accusantium doloribus quas porro corporis tempora nostrum, magnam consectetur, commodi, consequatur cupiditate delectus in. Ratione.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad voluptates sunt voluptas quisquam ex modi nisi, asperiores magni reiciendis tempore officiis consectetur dolores natus, eius eum, impedit, laudantium odit veritatis.</p>
+        </section>
+
+        <!-- your playlist for large displays -->
+        <aside class="your-playlist show-for-large-only large-3 columns">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis similique voluptatibus molestiae officia inventore omnis, consequuntur, incidunt ea nemo nisi magnam eveniet. Qui sit vitae, assumenda ex nam deserunt harum!
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam laboriosam voluptatum consequuntur explicabo aliquam vitae doloribus pariatur, iste deserunt facilis, unde quasi repudiandae in eos. Voluptatibus quae, aut blanditiis eius!</p>
+        </aside>
+      </section>
+
+    <a class="exit-off-canvas"></a>
+
+    </div>
+  </div>
+
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/pi.player.min.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+</body>
+</html>
