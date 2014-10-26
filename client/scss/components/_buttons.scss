@@ -10,11 +10,19 @@
   }
 
   &:before{
-    @include button;
+    @include button($bg:$light-green);
     content: '+ Add A Song';
     display: inline-block;
     visibility: visible;
     position: absolute;
     right: 0;
+    color: $dark-color;
+    text-transform: capitalize;
   }
 }
+.transparent-button{
+  @include button($bg: rgba(44, 44, 44, 0.8), $padding: rem-calc(10));
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+

@@ -10,7 +10,7 @@
 
   <!--  -->
   <link rel="stylesheet" href="css/pi.player.css">
-  <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300' rel='stylesheet' type='text/css'>
   <script src="js/vendor/modernizr.js"></script>
 
 </head>
@@ -22,10 +22,10 @@
     <div class="small-12 large-8 columns pi-player  large-centered">
       <header class="main-header row">
         <div class="small-6 columns title logo">
-          <h1>PI-player</h1>
+          <img src="img/pi_logo.png" alt="">
         </div>
         <div class="small-6 columns add-container">
-          <input type="file" class="add-button right">
+          <input type="file" class="add-button right" id="add-button">
         </div>
       </header>
 
@@ -38,42 +38,72 @@
                 <h4 class="title">Current Playlist</h4>
               </div>
               <div class="small-6 columns">
-                <a href="#" class="button tiny transparent-button right">View your added songs</a>
+                <a href="#" class="tiny transparent-button right">Your  songs</a>
               </div>
             </header>
             <div class="row song-list">
               <div class="small-12">
                 <ul class="no-bullet songs">
-                  <div class="container small-12 columns">
-                    <li class="song row">
-                      <span class="small-4 columns song-title ellipsis">Love Natural</span>
-                      <span class="small-4 columns song-length text-center">3:10</span>
-                      <span class="small-4 columns song-artist ellipsis">Drake</span>
+                  <div class="container small-12 columns list-container">
+                    <li data-id class="song row">
+                      <span class="small-6 columns medium-4 song-title ellipsis">Love Natural</span>
+                      <span class="small-2 medium-4 columns song-length text-center">3:10</span>
+                      <span class="small-4 columns song-artist ellipsis medium-4 ">Drake</span>
                     </li>
-                    <li class="song row">
-                      <span class="small-4 columns song-title ellipsis">Love Natural</span>
-                      <span class="small-4 columns song-length text-center">3:10</span>
-                      <span class="small-4 columns song-artist ellipsis">Drake</span>
+                    <li data-id class="song row disabled">
+                      <span class="small-6 columns medium-4 song-title ellipsis">Love Natural</span>
+                      <span class="small-2 medium-4 columns song-length text-center">3:10</span>
+                      <span class="small-4 columns song-artist ellipsis medium-4 ">Drake</span>
                     </li>
-                    <li class="song row playing">
-                      <span class="small-4 columns song-title ellipsis">Compliment Your Soul</span>
-                      <span class="small-4 columns song-length text-center">9:58</span>
-                      <span class="small-4 columns song-artist ellipsis">The Really Long band name</span>
+                    <li data-id class="song row disabled">
+                      <span class="small-6 columns medium-4 song-title ellipsis">Compliment Your Soul</span>
+                      <span class="small-2 medium-4 columns song-length text-center">9:58</span>
+                      <span class="small-4 columns song-artist ellipsis medium-4 ">The Really Long band name</span>
                     </li>
-                    <li class="song row">
-                      <span class="small-4 columns song-title ellipsis">Love Natural</span>
-                      <span class="small-4 columns song-length text-center">3:10</span>
-                      <span class="small-4 columns song-artist ellipsis">Drake</span>
+                    <li data-id class="song row">
+                      <span class="small-6 columns medium-4 song-title ellipsis">This is a really long song title</span>
+                      <span class="small-2 medium-4 columns song-length text-center">3:10</span>
+                      <span class="small-4 columns song-artist ellipsis medium-4 ">PI</span>
                     </li>
-                    <li class="song row">
-                      <span class="small-4 columns song-title ellipsis">Compliment Your Soul</span>
-                      <span class="small-4 columns song-length text-center">9:58</span>
-                      <span class="small-4 columns song-artist ellipsis">The Really Long band name</span>
+                    <li data-id class="song row">
+                      <span class="small-6 columns medium-4 song-title ellipsis">Love Natural</span>
+                      <span class="small-2 medium-4 columns song-length text-center">3:10</span>
+                      <span class="small-4 columns song-artist ellipsis medium-4 ">Drake</span>
                     </li>
-                    <li class="song row">
-                      <span class="small-4 columns song-title ellipsis">This is a really long song title</span>
-                      <span class="small-4 columns song-length text-center">3:10</span>
-                      <span class="small-4 columns song-artist ellipsis">PI</span>
+                    <li data-id class="song row">
+                      <span class="small-6 columns medium-4 song-title ellipsis">Love Natural</span>
+                      <span class="small-2 medium-4 columns song-length text-center">3:10</span>
+                      <span class="small-4 columns song-artist ellipsis medium-4 ">Drake</span>
+                    </li>
+                    <li data-id class="song row playing">
+                      <span class="small-6 columns medium-4 song-title ellipsis">Compliment Your Soul</span>
+                      <span class="small-2 medium-4 columns song-length text-center">9:58</span>
+                      <span class="small-4 columns song-artist ellipsis medium-4 ">The Really Long band name</span>
+                    </li>
+                    <li data-id class="song row">
+                      <span class="small-6 columns medium-4 song-title ellipsis">This is a really long song title</span>
+                      <span class="small-2 medium-4 columns song-length text-center">3:10</span>
+                      <span class="small-4 columns song-artist ellipsis medium-4 ">PI</span>
+                    </li>
+                    <li data-id class="song row">
+                      <span class="small-6 columns medium-4 song-title ellipsis">Love Natural</span>
+                      <span class="small-2 medium-4 columns song-length text-center">3:10</span>
+                      <span class="small-4 columns song-artist ellipsis medium-4 ">Drake</span>
+                    </li>
+                    <li data-id class="song row">
+                      <span class="small-6 columns medium-4 song-title ellipsis">Love Natural</span>
+                      <span class="small-2 medium-4 columns song-length text-center">3:10</span>
+                      <span class="small-4 columns song-artist ellipsis medium-4 ">Drake</span>
+                    </li>
+                    <li data-id class="song row">
+                      <span class="small-6 columns medium-4 song-title ellipsis">Compliment Your Soul</span>
+                      <span class="small-2 medium-4 columns song-length text-center">9:58</span>
+                      <span class="small-4 columns song-artist ellipsis medium-4 ">The Really Long band name</span>
+                    </li>
+                    <li data-id class="song row">
+                      <span class="small-6 columns medium-4 song-title ellipsis">This is a really long song title</span>
+                      <span class="small-2 medium-4 columns song-length text-center">3:10</span>
+                      <span class="small-4 columns song-artist ellipsis medium-4 ">PI</span>
                     </li>
                   </div>
                 </ul>
@@ -85,24 +115,24 @@
         <div class="now-playing row">
           <div class="container small-12 columns">
             <div class="row artist-details">
-              <div class="medium-4 small-12 columns song-details">
+              <div class="medium-4 small-12 large-5 columns song-details">
                 <div class="row">
                   <div class="small-6 columns album-art">
                     <img src="http://placehold.it/200x200" alt="Album art" title="Album art">
                   </div>
-                  <div class="small-6 columns album-art">
+                  <div class="small-6 columns song-title">
                     <h5 class="title">Song</h5>
-                    <p class="detail">Really long song title</p>
+                    <p class="detail ellipsis">Really long song title</p>
                   </div>
                 </div>
               </div>
-              <div class="medium-4 small-6 columns artist-name">
+              <div class="medium-4 small-6 large-3 columns artist-name">
                 <h5 class="title">Artist</h5>
-                <p class="detail">Really long artist name</p>
+                <p class="detail ellipsis">Really long artist name</p>
               </div>
               <div class="medium-4 small-6 columns album-details">
                 <h5 class="title">Album</h5>
-                <p class="detail">Really long album title</p>
+                <p class="detail ellipsis">Really long album title</p>
               </div>
             </div>
             <div class="progressbar row">
@@ -113,18 +143,13 @@
               </div>
             </div>
             <div class="playlist-controls row">
-              <div class="small-3 columns text-center">
-                <p><small class="playlist-action shuffle"><a href="#">Shuffle</a></small></p>
-              </div>
-              <div class="small-6 columns text-center">
+
+              <div class="small-8 columns small-centered text-center">
                 <ul class="small-block-grid-3 controls">
                   <li class="control backward"><a href="#"><i class="icon-backward"></i></a></li>
                   <li class="control play"><a href="#"><i class="icon-play"></i></a></li>
                   <li class="control forward"><a href="#"><i class="icon-forward"></i></a></li>
                 </ul>
-              </div>
-              <div class="small-3 columns text-center">
-                 <p><small class="playlist-action repeat"><a href="#">Repeat</a></small></p>
               </div>
             </div>
           </div>
@@ -145,7 +170,6 @@
 		});
 	</script>
   <script src="js/pi.player.min.js"></script>
-  <script src="js/front-test.js"></script>
   <script>
     Foundation.set_namespace = function () {};
     $(document).foundation();

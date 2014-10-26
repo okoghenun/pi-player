@@ -2,6 +2,7 @@
 //@prepros-append modules/clientstore.js
 //@prepros-append modules/client.js
 //@prepros-append modules/song.js
+//@prepros-append modules/playlist.js
 //@prepros-append modules/socket.js
 
 
