@@ -19,3 +19,8 @@ docs/public/*
 .settings
 .project
 tmp
+client/*.mp3
+pi-player-service/target
+pi-player-service/.settings
+pi-player-service/.project
+pi-player-service/.classpath
