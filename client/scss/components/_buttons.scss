@@ -1,0 +1,20 @@
+.add-button{
+  margin-bottom: 0 !important;
+  visibility: hidden;
+  width: initial !important;
+  display: inline;
+  position: relative;
+
+  &::-webkit-file-upload-button{
+    visibility: hidden;
+  }
+
+  &:before{
+    @include button;
+    content: '+ Add A Song';
+    display: inline-block;
+    visibility: visible;
+    position: absolute;
+    right: 0;
+  }
+}
