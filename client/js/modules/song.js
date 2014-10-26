@@ -4,7 +4,12 @@ var Song = function(file, fn){
 	if(file && file.id){
 //		file from the server
 		this.id = file.id;
-		this.meta = {};
+		this.title = file.title || '';
+		this.album = file.album || '';
+		this.artist = file.artist || '';
+		this.genre = file.genre || '';
+		this.duration = file.duration || 0;
+		this.year = file.year || '';
 	}
 	else if(file){
 //		new file from me

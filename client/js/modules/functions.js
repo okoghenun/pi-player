@@ -31,3 +31,6 @@ var render = function(template, data){
 		return (typeof v !== "undefined" && v !== null) ? v : "";
 	});
 }
+
+
+var $listContainer = $('.container');
