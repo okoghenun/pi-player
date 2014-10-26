@@ -3,10 +3,14 @@
   padding-top: rem-calc(20);
   padding-bottom: rem-calc(10);
   border-bottom: 3px solid $orange-color;
+  padding-left: rem-calc(20);
+  padding-right: rem-calc(20);
 }
 
-.title.logo h1{
-  text-indent: -99999999px;
-  background: url('../img/pi_logo.png');
-  background-repeat: no-repeat;
+.title.logo img{
+  // text-indent: -99999999px;
+  // background: url('../img/pi_logo.png');
+  // background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
 }

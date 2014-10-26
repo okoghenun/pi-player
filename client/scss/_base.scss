@@ -14,14 +14,14 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  min-height: 100%;
+  height: inherit;
   position: relative;
   //z-index: -1;
 
   &:before{
     background: rgba(0,0,0,.5);
     position: absolute;
-    top: 0;
+    top: 84px;
     right: 0;
     left: 0;
     bottom: 0;
@@ -33,6 +33,7 @@
 
 .main-section{
   padding-top: rem-calc(20);
+  height: calc(100% - 30%);
 }
 
 body{
