@@ -1,0 +1,54 @@
+.main-container{
+  height: inherit;
+
+  @media #{$large-up} {
+    padding-top: rem-calc(50);
+    padding-bottom: rem-calc(50);
+  }
+
+}
+
+.pi-player{
+  background: url('../img/bg-2.png');
+  background-repeat: no-repeat;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  min-height: 100%;
+  position: relative;
+  //z-index: -1;
+
+  &:before{
+    background: rgba(0,0,0,.5);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    content: "";
+    display: block;
+    //z-index: -1;
+  }
+}
+
+.main-section{
+  padding-top: rem-calc(20);
+}
+
+body{
+  background: url('../img/bg-1.png');
+  background-repeat: no-repeat;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+
+
+//Type related styles
+
+.ellipsis{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
