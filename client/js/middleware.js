@@ -193,17 +193,54 @@ Playlist.prototype.getSong = function(id){
 	})[0];
 };
 Playlist.prototype.addSong = function(song){
-	this.songs.push(song);
+	if(song instanceof Array){
+		this.songs.concat(song);
+	}
+	else{
+		this.songs.push(song);
+	}
 };
 
 var curPlaylist = new Playlist();
 
-var socket = io('http://192.168.43.49:8080');
-socket.on('connect', function(){
-	socket.on('event', function(data){});
-	socket.on('disconnect', function(){});
-	socket.on('/player/addSong', function(data){console.log(data)});
-	console.log('Connected to socket! :D');
+//var socket = io('http://192.168.43.49:8080');
+//socket.on('connect', function(){
+//	socket.on('event', function(data){});
+//	socket.on('disconnect', function(){});
+//	socket.on('/player/addSong', function(data){console.log(data)});
+//	console.log('Connected to socket! :D');
+//});
+var url = 'http://192.168.43.49:8080/hello';
+var SocketAbstract = function(url){
+	this.socket = new SockJS(url);
+	this.stompClient = Stomp.over(this.socket);
+};
+SocketAbstract.prototype.connect = function(fn){
+	this.stompClient.connect({}, fn);
+}
+SocketAbstract.prototype.on = function(channel, fn){
+	this.stompClient.subscribe(channel, fn(data));
+}
+var sck = new SocketAbstract(url);
+sck.connect(function(frame){
+	console.log('Connected: ' + frame);
+	sck.on('/player/addSong', function(data){
+		console.log(data);
+		return JSON.parse(data.body).content;
+	});
+	
+	stompClient.send('/app/addSong', {}, JSON.stringify({name: 'name'}));
+});
+
+var socket = new SockJS(url);
+stompClient = Stomp.over(socket);            
+stompClient.connect({}, function(frame) {
+	stompClient.subscribe('/player/addSong', function(data){
+		console.log(data);
+		return JSON.parse(data.body).content;
+	});
+	
+	stompClient.send('/app/addSong', {}, JSON.stringify({name: 'name'}));
 });
 
 var dev = false;
@@ -225,6 +262,7 @@ socket.on('playlistSent', function(data){
 });
 socket.on('songsAdded', function(data){
 	curPlaylist = data.playlist;
+	curPlaylist.addSong()
 });
 socket.on('songsRemoved', function(data){
 	curPlaylist = data.playlist;
