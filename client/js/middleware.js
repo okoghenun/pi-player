@@ -1,3 +1,20 @@
+(function($) {
+ 
+  var o = $({});
+ 
+  $.subscribe = function() {
+    o.on.apply(o, arguments);
+  };
+ 
+  $.unsubscribe = function() {
+    o.off.apply(o, arguments);
+  };
+ 
+  $.publish = function() {
+    o.trigger.apply(o, arguments);
+  };
+ 
+}(jQuery));
 
 var guid = function(){
 	return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -243,8 +260,8 @@ stompClient.connect({}, function(frame) {
 	stompClient.send('/app/addSong', {}, JSON.stringify({name: 'name'}));
 });
 
-var dev = false;
-if(dev){ //open dev
+
+if(false){ //open dev
 
 Song = {
 	id: 1,
