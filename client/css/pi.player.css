@@ -9836,6 +9836,7 @@ th.hide-for-touch {
 }
 
 [class^="icon-"],
+.playlist .song-list .song.playing .song-title:before,
 [class*=" icon-"] {
   font-family: 'icomoon';
   speak: none;
@@ -9865,7 +9866,8 @@ th.hide-for-touch {
   content: "\e601";
 }
 
-.icon-play:before {
+.icon-play:before,
+.playlist .song-list .song.playing .song-title:before {
   content: "\e602";
 }
 
@@ -9916,8 +9918,8 @@ th.hide-for-touch {
   padding-bottom: 1.0625rem;
   padding-left: 2rem;
   font-size: 1rem;
-  background-color: #008cba;
-  border-color: #007095;
+  background-color: #c6ff00;
+  border-color: #9ecc00;
   color: white;
   -webkit-transition: background-color 300ms ease-out;
   transition: background-color 300ms ease-out;
@@ -9926,15 +9928,55 @@ th.hide-for-touch {
   visibility: visible;
   position: absolute;
   right: 0;
+  color: #2c2c2c;
+  text-transform: capitalize;
 }
 
 .add-button:before:hover,
 .add-button:before:focus {
-  background-color: #007095;
+  background-color: #9ecc00;
 }
 
 .add-button:before:hover,
 .add-button:before:focus {
+  color: white;
+}
+
+.transparent-button {
+  border-style: solid;
+  border-width: 0px;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  line-height: normal;
+  margin: 0 0 1.25rem;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  display: inline-block;
+  padding-top: 0.625rem;
+  padding-right: 1.25rem;
+  padding-bottom: 0.6875rem;
+  padding-left: 1.25rem;
+  font-size: 0.6875rem;
+  background-color: rgba(44, 44, 44, 0.8);
+  border-color: rgba(35, 35, 35, 0.8);
+  color: white;
+  -webkit-transition: background-color 300ms ease-out;
+  transition: background-color 300ms ease-out;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+.transparent-button:hover,
+.transparent-button:focus {
+  background-color: rgba(35, 35, 35, 0.8);
+}
+
+.transparent-button:hover,
+.transparent-button:focus {
   color: white;
 }
 
@@ -9956,14 +9998,14 @@ th.hide-for-touch {
   -webkit-background-size: cover;
   background-size: cover;
   background-position: center center;
-  min-height: 100%;
+  height: inherit;
   position: relative;
 }
 
 .pi-player:before {
   background: rgba(0, 0, 0, 0.5);
   position: absolute;
-  top: 0;
+  top: 84px;
   right: 0;
   left: 0;
   bottom: 0;
@@ -9973,6 +10015,8 @@ th.hide-for-touch {
 
 .main-section {
   padding-top: 1.25rem;
+  height: -webkit-calc(100% - 30%);
+  height: calc(100% - 30%);
 }
 
 body {
@@ -9994,31 +10038,78 @@ body {
   background: #2c2c2c;
   padding-top: 1.25rem;
   padding-bottom: 0.625rem;
-  border-bottom: 3px solid #f7981c;
+  border-bottom: 3px solid #ff9900;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
-.title.logo h1 {
-  text-indent: -99999999px;
-  background: url("../img/pi_logo.png");
-  background-repeat: no-repeat;
+.title.logo img {
+  width: 55px;
+  height: 55px;
+}
+
+.playlist {
+  height: inherit;
+  overflow-y: scroll;
+}
+
+.playlist .container {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.playlist header,
+.playlist .row .row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 .playlist header .title {
   text-transform: uppercase;
-  font-size: 1.125rem;
+  font-size: 0.875rem;
   color: white;
-  font-weight: 500;
+  font-weight: 400;
+}
+
+@media only screen and (min-width: 40.063em) {
+  .playlist header .title {
+    font-size: 1.125rem;
+  }
 }
 
 .playlist .song-list .song {
-  font-weight: 500;
-  padding-top: 0.3125rem;
-  padding-bottom: 0.3125rem;
+  font-weight: 300;
+  padding-top: 0.4375rem;
+  padding-bottom: 0.4375rem;
+  font-size: 0.875rem;
 }
 
 .playlist .song-list .song.playing {
   background: #f4f5f6;
   color: #2c2c2c;
+  margin-left: -1.40625rem !important;
+  margin-right: -1.40625rem !important;
+  padding-left: 1.40625rem !important;
+  padding-right: 1.40625rem !important;
+}
+
+.playlist .song-list .song.playing .song-title {
+  font-weight: 500;
+  position: relative;
+}
+
+.playlist .song-list .song.playing .song-title:before {
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+}
+
+.playlist .song-list .song.disabled {
+  color: #999;
+}
+
+.playlist .song-list .song .song-title {
+  font-weight: 400;
 }
 
 .now-playing {
@@ -10038,8 +10129,15 @@ body {
 }
 
 .now-playing .song-details .album-art img {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
+}
+
+@media only screen and (max-width: 40em) {
+  .now-playing .song-details .album-art img {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 .now-playing .song-details .title,
@@ -10047,6 +10145,29 @@ body {
 .now-playing .album-details .title {
   color: white;
   font-weight: 500;
+  font-size: 0.875rem;
+  margin-bottom: 0;
+}
+
+.now-playing .song-details .detail,
+.now-playing .artist-name .detail,
+.now-playing .album-details .detail {
+  margin-bottom: 0;
+  line-height: 1.4;
+  font-size: 0.75rem;
+  font-weight: 300;
+}
+
+@media only screen and (min-width: 40.063em) {
+  .now-playing .artist-name,
+  .now-playing .album-details,
+  .now-playing .song-title {
+    padding-top: 2.5rem;
+  }
+
+  .now-playing .song-title {
+    padding-left: 0;
+  }
 }
 
 .now-playing .progressbar {
@@ -10061,7 +10182,7 @@ body {
 }
 
 .now-playing .progressbar .progress .meter {
-  background: #e09500;
+  background: #ff9900;
 }
 
 .now-playing .progressbar .progress .current-time,
@@ -10111,7 +10232,7 @@ body {
 
 .now-playing .playlist-controls a:hover,
 .now-playing .playlist-controls a:focus {
-  color: #ffa900;
+  color: #ff9900;
 }
 
 .now-playing .playlist-controls .control {

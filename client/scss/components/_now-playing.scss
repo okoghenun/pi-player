@@ -15,8 +15,12 @@
 
   .song-details{
     .album-art img{
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
+      @media #{$small-only} {
+        width: 50px;
+        height: 50px;
+      }
     }
   }
 
@@ -26,8 +30,28 @@
     .title{
       color: $font-color;
       font-weight: 500;
+      font-size: rem-calc(14);
+      margin-bottom: 0;
+    }
+    .detail{
+      margin-bottom: 0;
+      line-height: 1.4;
+      font-size: rem-calc(12);
+      font-weight: 300;
     }
   }
+
+@media #{$medium-up} {
+  .artist-name,
+  .album-details,
+  .song-title{
+    padding-top: rem-calc(40);
+  }
+  .song-title{
+    padding-left: 0;
+  }
+}
+
 
   .progressbar{
     position: relative;
@@ -38,7 +62,7 @@
       margin-bottom: 0;
 
       .meter{
-        background: scale-color($player-orange, $lightness: -12%);
+        background: $player-orange;
       }
       .current-time,
       .song-time{

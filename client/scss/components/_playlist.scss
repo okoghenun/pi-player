@@ -1,21 +1,63 @@
 .playlist{
+  height: inherit;
+  overflow-y: scroll;
+
+  .container{
+    padding-left: rem-calc(20);
+    padding-right: rem-calc(20);
+  }
+  header, .row .row{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
 
     header .title{
       text-transform: uppercase;
-      font-size: rem-calc(18);
+      font-size: rem-calc(14);
       color: $font-color;
-      font-weight: 500;
+      font-weight: 400;
+
+      @media #{$medium-up} {
+        font-size: rem-calc(18);
+      }
     }
 
     .song-list{
+
       .song{
-        font-weight: 500;
-        padding-top: rem-calc(5);
-        padding-bottom: rem-calc(5);
+        font-weight: 300;
+        padding-top: rem-calc(7);
+        padding-bottom: rem-calc(7);
+        font-size: rem-calc(14);
 
         &.playing{
           background: $gray-color;
           color: $dark-color;
+          margin-left:rem-calc(-22.5) !important;
+          margin-right:rem-calc(-22.5) !important;
+
+          padding-left:rem-calc(22.5) !important;
+          padding-right:rem-calc(22.5) !important;
+
+          .song-title{
+            font-weight: 500;
+            position: relative;
+
+            &:before{
+              @extend [class^="icon-"];
+              @extend .icon-play:before;
+              position: absolute;
+              bottom: 3px;
+              left: 0;
+            }
+          }
+        }
+
+        &.disabled{
+          color: #999;
+        }
+        .song-title{
+          font-weight: 400;
         }
       }
     }
