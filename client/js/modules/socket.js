@@ -1,7 +1,9 @@
-var url = 'http://192.168.43.49:8080/hello';
+//var base = 'http://192.168.43.49:8080';
+var base = '';
+var url = base + '/hello';
 var socket = new SockJS(url);
 
-$.getJSON('http://192.168.43.49:8080/songs/index', function(data){
+$.getJSON(base + '/songs/index', function(data){
 	console.log(data);
 	curPlaylist = new Playlist(data);
 });
