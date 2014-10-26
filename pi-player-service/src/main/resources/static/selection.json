@@ -1,0 +1,265 @@
+{
+	"IcoMoonType": "selection",
+	"icons": [
+		{
+			"icon": {
+				"paths": [
+					"M69.632 530.432q0-22.528 15.36-38.912l77.824-77.824q16.384-16.384 38.912-16.384t38.912 16.384l167.936 168.96 374.784-375.808q16.384-16.384 38.912-16.384t38.912 16.384l77.824 77.824q15.36 16.384 15.36 38.912t-15.36 38.912l-491.52 491.52q-16.384 15.36-38.912 15.36t-38.912-15.36l-284.672-284.672q-15.36-16.384-15.36-38.912z"
+				],
+				"attrs": [
+					{}
+				],
+				"tags": [
+					"ok"
+				],
+				"defaultCode": 59396,
+				"grid": 0
+			},
+			"attrs": [
+				{}
+			],
+			"properties": {
+				"id": 4,
+				"order": 2,
+				"prevSize": 32,
+				"code": 59396,
+				"name": "ok",
+				"ligatures": ""
+			},
+			"setIdx": 0,
+			"iconIdx": 4
+		},
+		{
+			"icon": {
+				"paths": [
+					"M0 840.704v-72.704q0-15.36 11.264-25.6t25.6-11.264h803.84q15.36 0 26.624 11.264t10.24 25.6v72.704q0 15.36-10.24 26.624t-26.624 10.24h-803.84q-15.36 0-25.6-10.24t-11.264-26.624zM0 548.864v-73.728q0-14.336 11.264-25.6t25.6-10.24h803.84q15.36 0 26.624 10.24t10.24 25.6v73.728q0 14.336-10.24 25.6t-26.624 10.24h-803.84q-15.36 0-25.6-10.24t-11.264-25.6zM0 256v-72.704q0-15.36 11.264-26.624t25.6-10.24h803.84q15.36 0 26.624 10.24t10.24 26.624v72.704q0 15.36-10.24 25.6t-26.624 11.264h-803.84q-15.36 0-25.6-11.264t-11.264-25.6z"
+				],
+				"attrs": [
+					{}
+				],
+				"width": 878,
+				"tags": [
+					"menu"
+				],
+				"defaultCode": 59403,
+				"grid": 0
+			},
+			"attrs": [
+				{}
+			],
+			"properties": {
+				"id": 11,
+				"order": 3,
+				"prevSize": 32,
+				"code": 59403,
+				"name": "menu",
+				"ligatures": ""
+			},
+			"setIdx": 0,
+			"iconIdx": 11
+		},
+		{
+			"icon": {
+				"paths": [
+					"M0 416v192c0 17.672 14.328 32 32 32h960c17.672 0 32-14.328 32-32v-192c0-17.672-14.328-32-32-32h-960c-17.672 0-32 14.328-32 32z"
+				],
+				"tags": [
+					"minus",
+					"minimize",
+					"subtract"
+				],
+				"grid": 16
+			},
+			"properties": {
+				"id": 257,
+				"order": 4,
+				"prevSize": 32,
+				"code": 58880,
+				"name": "minus",
+				"ligatures": ""
+			},
+			"setIdx": 2,
+			"iconIdx": 257
+		},
+		{
+			"icon": {
+				"paths": [
+					"M992 384h-352v-352c0-17.672-14.328-32-32-32h-192c-17.672 0-32 14.328-32 32v352h-352c-17.672 0-32 14.328-32 32v192c0 17.672 14.328 32 32 32h352v352c0 17.672 14.328 32 32 32h192c17.672 0 32-14.328 32-32v-352h352c17.672 0 32-14.328 32-32v-192c0-17.672-14.328-32-32-32z"
+				],
+				"tags": [
+					"plus",
+					"add",
+					"sum"
+				],
+				"grid": 16
+			},
+			"properties": {
+				"id": 258,
+				"order": 5,
+				"prevSize": 32,
+				"code": 58881,
+				"name": "plus2",
+				"ligatures": ""
+			},
+			"setIdx": 2,
+			"iconIdx": 258
+		},
+		{
+			"icon": {
+				"paths": [
+					"M192 128l640 384-640 384z"
+				],
+				"tags": [
+					"play",
+					"media control",
+					"audio"
+				],
+				"grid": 16
+			},
+			"properties": {
+				"id": 266,
+				"order": 6,
+				"prevSize": 32,
+				"code": 58882,
+				"name": "play",
+				"ligatures": ""
+			},
+			"setIdx": 2,
+			"iconIdx": 266
+		},
+		{
+			"icon": {
+				"paths": [
+					"M128 128h320v768h-320zM576 128h320v768h-320z"
+				],
+				"tags": [
+					"pause",
+					"media control",
+					"audio"
+				],
+				"grid": 16
+			},
+			"properties": {
+				"id": 267,
+				"order": 7,
+				"prevSize": 32,
+				"code": 58883,
+				"name": "pause",
+				"ligatures": ""
+			},
+			"setIdx": 2,
+			"iconIdx": 267
+		},
+		{
+			"icon": {
+				"paths": [
+					"M128 128h768v768h-768z"
+				],
+				"tags": [
+					"stop",
+					"media control",
+					"audio",
+					"square"
+				],
+				"grid": 16
+			},
+			"properties": {
+				"id": 268,
+				"order": 8,
+				"prevSize": 32,
+				"code": 58884,
+				"name": "stop",
+				"ligatures": ""
+			},
+			"setIdx": 2,
+			"iconIdx": 268
+		},
+		{
+			"icon": {
+				"paths": [
+					"M576 160v320l320-320v704l-320-320v320l-352-352z"
+				],
+				"tags": [
+					"backward",
+					"media control",
+					"audio"
+				],
+				"grid": 16
+			},
+			"properties": {
+				"id": 269,
+				"order": 9,
+				"prevSize": 32,
+				"code": 58885,
+				"name": "backward",
+				"ligatures": ""
+			},
+			"setIdx": 2,
+			"iconIdx": 269
+		},
+		{
+			"icon": {
+				"paths": [
+					"M512 864v-320l-320 320v-704l320 320v-320l352 352z"
+				],
+				"tags": [
+					"forward",
+					"media control",
+					"audio"
+				],
+				"grid": 16
+			},
+			"properties": {
+				"id": 270,
+				"order": 10,
+				"prevSize": 32,
+				"code": 58886,
+				"name": "forward",
+				"ligatures": ""
+			},
+			"setIdx": 2,
+			"iconIdx": 270
+		}
+	],
+	"height": 1024,
+	"metadata": {
+		"name": "icomoon"
+	},
+	"preferences": {
+		"fontPref": {
+			"prefix": "icon-",
+			"metadata": {
+				"fontFamily": "icomoon"
+			},
+			"showGlyphs": true,
+			"metrics": {
+				"emSize": 512,
+				"baseline": 6.25,
+				"whitespace": 50
+			},
+			"resetPoint": 58880,
+			"showQuickUse": true,
+			"quickUsageToken": false,
+			"showMetrics": true,
+			"showMetadata": false
+		},
+		"imagePref": {
+			"color": 3447295,
+			"height": 16,
+			"columns": 16,
+			"margin": 16,
+			"png": true,
+			"sprites": false
+		},
+		"historySize": 100,
+		"showCodes": true,
+		"gridSize": 16,
+		"showLiga": false,
+		"showGrid": true,
+		"showGlyphs": true,
+		"showQuickUse": true,
+		"search": "",
+		"showQuickUse2": true,
+		"showSVGs": true
+	}
+}
