@@ -12,6 +12,11 @@
         font-weight: 500;
         padding-top: rem-calc(5);
         padding-bottom: rem-calc(5);
+
+        &.playing{
+          background: $gray-color;
+          color: $dark-color;
+        }
       }
     }
 }

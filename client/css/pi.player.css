@@ -9829,8 +9829,8 @@ th.hide-for-touch {
 
 @font-face {
   font-family: 'icomoon';
-  src: url("fonts/icomoon.eot?-moujn2");
-  src: url("fonts/icomoon.eot?#iefix-moujn2") format("embedded-opentype"), url("fonts/icomoon.woff?-moujn2") format("woff"), url("fonts/icomoon.ttf?-moujn2") format("truetype"), url("fonts/icomoon.svg?-moujn2#icomoon") format("svg");
+  src: url("../fonts/icomoon.eot?-moujn2");
+  src: url("../fonts/icomoon.eot?#iefix-moujn2") format("embedded-opentype"), url("../fonts/icomoon.woff?-moujn2") format("woff"), url("../fonts/icomoon.ttf?-moujn2") format("truetype"), url("../fonts/icomoon.svg?-moujn2#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -10016,6 +10016,11 @@ body {
   padding-bottom: 0.3125rem;
 }
 
+.playlist .song-list .song.playing {
+  background: #f4f5f6;
+  color: #2c2c2c;
+}
+
 .now-playing {
   position: absolute;
   bottom: 0;
@@ -10055,6 +10060,10 @@ body {
   margin-bottom: 0;
 }
 
+.now-playing .progressbar .progress .meter {
+  background: #e09500;
+}
+
 .now-playing .progressbar .progress .current-time,
 .now-playing .progressbar .progress .song-time {
   position: absolute;
@@ -10069,4 +10078,42 @@ body {
 
 .now-playing .progressbar .progress .current-time {
   left: 12px;
+}
+
+.now-playing .playlist-controls {
+  background-color: #f4f5f6;
+  color: #2c2c2c;
+  padding-top: 0.9375rem;
+  padding-bottom: 0.9375rem;
+}
+
+.now-playing .playlist-controls p,
+.now-playing .playlist-controls li {
+  margin-bottom: 0;
+  line-height: 1.4;
+  padding-bottom: 0;
+}
+
+.now-playing .playlist-controls ul.controls {
+  padding: 0;
+}
+
+.now-playing .playlist-controls .playlist-action {
+  font-size: 80%;
+  text-transform: uppercase;
+  padding-top: 0.9375rem;
+  display: inline-block;
+}
+
+.now-playing .playlist-controls a {
+  color: #2c2c2c;
+}
+
+.now-playing .playlist-controls a:hover,
+.now-playing .playlist-controls a:focus {
+  color: #ffa900;
+}
+
+.now-playing .playlist-controls .control {
+  font-size: 2.1875rem;
 }
