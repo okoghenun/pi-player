@@ -15,31 +15,99 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.1.8.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-websocket</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 		<dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-        </dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-messaging</artifactId>
-        </dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-messaging</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2</version>
+		</dependency>
+		
+		
+		
+		
+		<dependency>
+			<groupId>com.googlecode.soundlibs</groupId>
+			<artifactId>mp3spi</artifactId>
+			<version>1.9.5-1</version>
+		</dependency>
+		
+		
+		<!-- local dependencies -->
+		<dependency>
+			<groupId>javazoom</groupId>
+			<artifactId>basicplayer</artifactId>
+			<version>3.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/basicplayer3.0.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>javazoom</groupId>
+			<artifactId>jl</artifactId>
+			<version>1.0.1</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/jl_1.0.1.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>javazoom</groupId>
+			<artifactId>vorbisspi</artifactId>
+			<version>1.0.2</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/vorbisspi_1.0.2.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.jcraft</groupId>
+			<artifactId>jogg</artifactId>
+			<version>0.0.7</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/jogg_0.0.7.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.jcraft</groupId>
+			<artifactId>jorbis</artifactId>
+			<version>0.0.15</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/jorbis0.0.15.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>org.xiph</groupId>
+			<artifactId>jspeex</artifactId>
+			<version>0.9.7</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/jspeex_0.9.7.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>org.tritonus</groupId>
+			<artifactId>share</artifactId>
+			<version>0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/tritonus_share.jar</systemPath>
+		</dependency>
+		
+
 	</dependencies>
 
 	<properties>
