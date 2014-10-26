@@ -9885,6 +9885,59 @@ th.hide-for-touch {
   content: "\e606";
 }
 
+.add-button {
+  margin-bottom: 0 !important;
+  visibility: hidden;
+  width: initial !important;
+  display: inline;
+  position: relative;
+}
+
+.add-button::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.add-button:before {
+  border-style: solid;
+  border-width: 0px;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  line-height: normal;
+  margin: 0 0 1.25rem;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  display: inline-block;
+  padding-top: 1rem;
+  padding-right: 2rem;
+  padding-bottom: 1.0625rem;
+  padding-left: 2rem;
+  font-size: 1rem;
+  background-color: #008cba;
+  border-color: #007095;
+  color: white;
+  -webkit-transition: background-color 300ms ease-out;
+  transition: background-color 300ms ease-out;
+  content: '+ Add A Song';
+  display: inline-block;
+  visibility: visible;
+  position: absolute;
+  right: 0;
+}
+
+.add-button:before:hover,
+.add-button:before:focus {
+  background-color: #007095;
+}
+
+.add-button:before:hover,
+.add-button:before:focus {
+  color: white;
+}
+
 .main-container {
   height: inherit;
 }
