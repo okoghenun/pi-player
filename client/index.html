@@ -10,7 +10,7 @@
 
   <!--  -->
   <link rel="stylesheet" href="css/pi.player.css">
-
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
   <script src="js/vendor/modernizr.js"></script>
 
 </head>
@@ -18,103 +18,96 @@
 
   <!-- body content here -->
 
-  <div class="off-canvas-wrap" data-offcanvas>
-    <div class="inner-wrap">
-      <nav class="tab-bar show-for-small-only">
-        <section class="left-small">
-          <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
-        </section>
-
-        <section class="middle tab-bar-section">
-          <h1 class="title">Foundation</h1>
-        </section>
-
-        <section class="right-small">
-          <a class="add-button button tiny " href="#">Add a song</a>
-        </section>
-      </nav>
-
-      <nav class="top-bar show-for-medium-up" data-topbar role="navigation">
-        <ul class="title-area">
-           <li class="name">
-             <h1><a href="#">PI Player</a></h1>
-           </li>
-         </ul>
-
-         <section class="top-bar-section">
-           <ul class="left">
-             <li><a href="#"><strong>1234</strong> Songs on the playlist</a></li>
-             <li><a href="#"><strong>234</strong> Songs played</a></li>
-             <li><a href="#"><strong>34</strong> Listners</a></li>
-           </ul>
-
-           <ul class="right">
-             <li class="has-form show-for-medium-only"><a href="#" class="button">Add song</a></li>
-           </ul>
-         </section>
-      </nav>
-
-      <aside class="left-off-canvas-menu">
-        <ul class="off-canvas-list">
-          <li><label>Foundation</label></li>
-          <li><a href="#">The Psychohistorians</a></li>
-          <li><a href="#">...</a></li>
-        </ul>
-      </aside>
-
-      <aside class="right-off-canvas-menu">
-        <ul class="off-canvas-list">
-          <li><label>Users</label></li>
-          <li><a href="#">Hari Seldon</a></li>
-          <li><a href="#">...</a></li>
-        </ul>
-      </aside>
+  <div class="row main-container">
+    <div class="small-12 large-8 columns pi-player  large-centered">
+      <header class="main-header row">
+        <div class="small-6 columns title logo">
+          <h1>PI-player</h1>
+        </div>
+        <div class="small-6 columns add-container">
+          <a href="#" class="add-button button small right">Add a song</a>
+        </div>
+      </header>
 
       <section class="main-section">
-        <!-- content goes here -->
 
-        <!-- current playlist for large-displays -->
-        <aside class="current-playlist show-for-large-only medium-4 large-3 columns">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione esse accusamus placeat, tenetur dolorem vero facilis vitae maxime veniam, odio cumque sunt tempora optio ipsum incidunt, delectus, quam blanditiis fugiat.
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum ut mollitia asperiores similique iusto quis, maxime ipsam labore nihil. Similique natus quaerat pariatur consequatur dolorem voluptatem nobis corporis consequuntur voluptatum.</p>
-        </aside>
+        <div class="current-paylist playlist row">
+          <div class="container small-12 columns">
+            <header class="row">
+              <div class="small-6 columns">
+                <h4 class="title">Current Playlist</h4>
+              </div>
+              <div class="small-6 columns">
+                <a href="#" class="button tiny transparent-button right">View your added songs</a>
+              </div>
+            </header>
+            <div class="row song-list">
+              <div class="small-12">
+                <ul class="no-bullet songs">
+                  <div class="container small-12 columns">
+                    <li class="song row">
+                      <span class="small-4 columns song-title ellipsis">Love Natural</span>
+                      <span class="small-4 columns song-length text-center">3:10</span>
+                      <span class="small-4 columns song-artist ellipsis">Drake</span>
+                    </li>
+                    <li class="song row">
+                      <span class="small-4 columns song-title ellipsis">Love Natural</span>
+                      <span class="small-4 columns song-length text-center">3:10</span>
+                      <span class="small-4 columns song-artist ellipsis">Drake</span>
+                    </li>
+                    <li class="song row">
+                      <span class="small-4 columns song-title ellipsis">Compliment Your Soul</span>
+                      <span class="small-4 columns song-length text-center">9:58</span>
+                      <span class="small-4 columns song-artist ellipsis">The Really Long band name</span>
+                    </li>
+                    <li class="song row">
+                      <span class="small-4 columns song-title ellipsis">This is a really long song title</span>
+                      <span class="small-4 columns song-length text-center">3:10</span>
+                      <span class="small-4 columns song-artist ellipsis">PI</span>
+                    </li>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <!-- current and now playing playlists for medium displays -->
-        <aside class="playlists show-for-medium-only medium-4 large-3 columns">
-          <section class="current-playlist">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione esse accusamus placeat, tenetur dolorem vero facilis vitae maxime veniam, odio cumque sunt tempora optio ipsum incidunt, delectus, quam blanditiis fugiat.
+        <div class="now-playing row">
+          <div class="container small-12 columns">
+            <div class="row artist-details">
+              <div class="medium-4 small-12 columns song-details">
+                <div class="row">
+                  <div class="small-6 columns album-art">
+                    <img src="http://placehold.it/200x200" alt="Album art" title="Album art">
+                  </div>
+                  <div class="small-6 columns album-art">
+                    <h5 class="title">Song</h5>
+                    <p class="detail">Really long song title</p>
+                  </div>
+                </div>
+              </div>
+              <div class="medium-4 small-6 columns artist-name">
+                <h5 class="title">Artist</h5>
+                <p class="detail">Really long artist name</p>
+              </div>
+              <div class="medium-4 small-6 columns album-details">
+                <h5 class="title">Album</h5>
+                <p class="detail">Really long album title</p>
+              </div>
+            </div>
+            <div class="progressbar row">
+              <div class="progress large-12">
+                <span class="meter" style="width: 40%"></span>
+                <small class="current-time">2:10</small>
+                <small class="song-time">5:20</small>
+              </div>
+            </div>
+          </div>
+        </div>
 
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum ut mollitia asperiores similique iusto quis, maxime ipsam labore nihil. Similique natus quaerat pariatur consequatur dolorem voluptatem nobis corporis consequuntur voluptatum.
-            </p>
-          </section>
-          <section class="your-paylist">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione esse accusamus placeat, tenetur dolorem vero facilis vitae maxime veniam, odio cumque sunt tempora optio ipsum incidunt, delectus, quam blanditiis fugiat.
-
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum ut mollitia asperiores similique iusto quis, maxime ipsam labore nihil. Similique natus quaerat pariatur consequatur dolorem voluptatem nobis corporis consequuntur voluptatum.
-            </p>
-          </section>
-        </aside>
-
-        <!-- playing section -->
-        <section class="playing small-12 medium-8 large-6 columns">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque mollitia, nam accusamus sapiente voluptatem accusantium doloribus quas porro corporis tempora nostrum, magnam consectetur, commodi, consequatur cupiditate delectus in. Ratione.
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad voluptates sunt voluptas quisquam ex modi nisi, asperiores magni reiciendis tempore officiis consectetur dolores natus, eius eum, impedit, laudantium odit veritatis.</p>
-        </section>
-
-        <!-- your playlist for large displays -->
-        <aside class="your-playlist show-for-large-only large-3 columns">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis similique voluptatibus molestiae officia inventore omnis, consequuntur, incidunt ea nemo nisi magnam eveniet. Qui sit vitae, assumenda ex nam deserunt harum!
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam laboriosam voluptatum consequuntur explicabo aliquam vitae doloribus pariatur, iste deserunt facilis, unde quasi repudiandae in eos. Voluptatibus quae, aut blanditiis eius!</p>
-        </aside>
       </section>
-
-    <a class="exit-off-canvas"></a>
-
     </div>
   </div>
-
   <script src="js/vendor/id3.js"></script>
 	<script src="js/vendor/socket.io.js"></script>
   <script src="js/middleware.js"></script>
@@ -124,10 +117,10 @@
 			console.log(tags);
 		});
 	</script>
-
   <script src="js/vendor/jquery.js"></script>
   <script src="js/pi.player.min.js"></script>
   <script>
+    Foundation.set_namespace = function () {};
     $(document).foundation();
   </script>
 </body>

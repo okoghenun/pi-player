@@ -1,0 +1,17 @@
+.playlist{
+
+    header .title{
+      text-transform: uppercase;
+      font-size: rem-calc(18);
+      color: $font-color;
+      font-weight: 500;
+    }
+
+    .song-list{
+      .song{
+        font-weight: 500;
+        padding-top: rem-calc(5);
+        padding-bottom: rem-calc(5);
+      }
+    }
+}

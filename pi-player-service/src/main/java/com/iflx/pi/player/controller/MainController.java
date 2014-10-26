@@ -16,15 +16,29 @@ public class MainController {
 	@Autowired PiPlayer player;
 	
 	@MessageMapping("/hello")
-    @SendTo("/topic/greetings")
+    @SendTo("/player/greetings")
     public Greeting greeting(HelloMessage message) throws Exception {
-
         return new Greeting("Hello, " + message.getName() + "!");
     }
 
-	public @ResponseBody String play(){
-		return null;
-		
-	}
- 	
+	@MessageMapping("/pause")
+    @SendTo("/player/pauseCurrent")
+    public Greeting pause(HelloMessage message) throws Exception {
+        return new Greeting("current song paused");
+    }
+	
+	@MessageMapping("/stop")
+    @SendTo("/player/stopCurrent")
+    public Greeting stop(HelloMessage message) throws Exception {
+        return new Greeting("Current song stopped");
+    }
+	
+	@MessageMapping("/addSong")
+    @SendTo("/player/addSong")
+    public Greeting addSong(HelloMessage message) throws Exception {
+		//capture details of song to be added
+		//add the list to the db
+		//broadcast event to all connected users
+        return new Greeting("New Song added!");
+    }
 }
