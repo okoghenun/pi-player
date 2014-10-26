@@ -1,17 +1,22 @@
 var Song = function(file, fn){
 	var self = this;
 	this.id = 's' + guid();
-	this.meta = {};
 	if(file && file.id){
 //		file from the server
 		this.id = file.id;
-		this.meta = file.meta;
+		this.meta = {};
 	}
 	else if(file){
 //		new file from me
 		this.file = file;
 		this.getMeta(file, function(meta){
 			self.meta = meta;
+			self.title = meta.title;
+			self.album = meta.album;
+			self.artist = meta.artist;
+			self.genre = meta.genre;
+			self.duration = meta.duration;
+			self.year = meta.year;
 			if(fn)fn.apply(self, [meta]);
 		});
 		cStore.save(this.id, this.getFile());
@@ -37,12 +42,16 @@ Song.prototype.getMeta = function(file, fn){
 				var tempAudioObj = document.createElement('audio');
 				tempAudioObj.addEventListener('canplaythrough', function(e){
 					meta.duration = e.currentTarget.duration;
+//					console.log(e.currentTarget.duration);
 					URL.revokeObjectURL(objectUrl);
+					fn(meta);
 				});
 				tempAudioObj.setAttribute('src', objectUrl);
 			}
+			else{
+				fn(meta);
+			}
 			
-			fn(meta);
 		}
 		else{
 			console.log(err);
@@ -59,7 +68,12 @@ Song.prototype.getFile = function(){
 Song.prototype.toJSON = function(){
 	var songObj = {
 		id: this.id,
-		meta: this.meta
+		title: this.meta.title,
+		album: this.meta.album,
+		artist: this.meta.artist,
+		genre: this.meta.genre,
+		duration: this.meta.duration,
+		year: this.meta.year
 	};
 	
 	return songObj;

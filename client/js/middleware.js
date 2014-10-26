@@ -36,8 +36,7 @@ Song = {
 		duration: 129023, //in secs
 		album: 'one',
 		genre: 'classic'
-	},
-	inMemory: true
+	}
 };
 socket.on('playlistSent', function(data){
 	curPlaylist = data.playlist;
