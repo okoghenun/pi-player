@@ -126,7 +126,6 @@ ClientStore.prototype.getList = function(fn){
 
 var cStore = new ClientStore();
 
-	
 var Client = function(){
 	this.id = 'c' + guid();
 };
@@ -158,6 +157,7 @@ Song.getMeta = function(file){
 		meta.genre = tags.genre || tags.v2.genre;
 		meta.duration = tags.duration || tags.v2.duration;
 		meta.year = tags.year || tags.v2.year;
+//		meta.albumArt = tags.v2.image
 	});
 	
 	if(!meta.duration){
@@ -185,6 +185,7 @@ var Playlist = function(){
 	this.currentSong = new Song();
 	this.elapsedTime = 0; //
 	this.currentEpochTime = new Date();
+	this.isPlaying = false;
 };
 Playlist.prototype.getSong = function(id){
 	return this.songs.filter(function(a){
@@ -193,9 +194,6 @@ Playlist.prototype.getSong = function(id){
 };
 Playlist.prototype.addSong = function(song){
 	this.songs.push(song);
-};
-Playlist.prototype.isPlaying = function(){
-	
 };
 
 var curPlaylist = new Playlist();
