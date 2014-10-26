@@ -15,15 +15,6 @@ stompClient.connect({}, function(frame) {
 		console.log(result);
 		
 		curPlaylist.addSong(new Song(result));
-		var getDuration = function(duration){
-			var dWhole = Math.floor(result.duration / 60);
-			var dRem = '' + Math.round(((result.duration/60) - dWhole)*60);
-			dRem = (dRem.length<2)? '0' + dRem: dRem;
-			return dWhole + ':' + dRem;
-		}
-		result.duration = getDuration(result.duration);
-//		return result.content;
-		$('.song').last().after();
 	});
 	stompClient.subscribe('/player/songRemoved', function(data){
 		var result = JSON.parse(data.body); 
@@ -76,10 +67,15 @@ $.subscribe('addedSong', function(e, data){
 	var song = new Song(data.files[0], function(){
 		console.log(this.toJSON());
 		stompClient.send('/app/addSong', {}, JSON.stringify(this.toJSON()));
+		var uploadData = new FormData();
+		uploadData.append('id', this.id);
+		uploadData.append('file', this.file);
+		$.post(base + 'songs/upload', uploadData);
+		
 	});
 //	var song = new Song(data.file);
 });
-$.subscribe('removedSong', function(e, data){
+$.subscribe('removeSong', function(e, data){
 	stompClient.send('/app/removeSong', {}, JSON.stringify({id: song.id}));
 });
 $.subscribe('playCurrent', function(e, data){
@@ -102,3 +98,12 @@ $.subscribe('reorderPlaylist', function(e, data){
 });
 //socket.emit('getPlaylist', {});
 
+
+
+$addButton.on('change', function(e){
+	$.publish('addedSong', {files: e.target.files});
+});
+
+$listContainer.on('click', '.remove-item', function(e){
+	$.publish('removeSong', {songID: $(this).data('id')});
+});

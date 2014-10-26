@@ -33,4 +33,8 @@ var render = function(template, data){
 }
 
 
-var $listContainer = $('.container');
+var $listContainer = $('.list-container');
+var $controlsContainer = $('.playlist-controls');
+var $nowPlayingContainer = $('.now-playing');
+var $addButton = $('.add-button');
+var songItemTemplate = '<li class="song row" data-id="{id}"><span class="small-4 columns song-title ellipsis">{title}</span><span class="small-4 columns song-length text-center">{duration}</span><span class="small-4 columns song-artist ellipsis">{artist}</span><a class="remove-item" href="#">[Remove]</a></li>';
