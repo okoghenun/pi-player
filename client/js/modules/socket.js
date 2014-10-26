@@ -45,9 +45,20 @@ stompClient.connect({}, function(frame) {
 
 
 $.subscribe('addedSong', function(e, data){
-	var song = new Song(data.file);
+//	var songs = [];
+	console.log(data);
+//	for(var i = 0; i < data.files.length; i++){
+//		songs.push(new Song(data.files[i], function(){
+//			this.toJSON();
+//			console.log(this.meta);
+//		}));
+//	}
 	
-	stompClient.send('/app/addSong', {}, JSON.stringify(song.toJSON()));
+	var song = new Song(data.files[0], function(){
+		console.log(this.toJSON());
+		stompClient.send('/app/addSong', {}, JSON.stringify(this.toJSON()));
+	});
+//	var song = new Song(data.file);
 });
 $.subscribe('removedSong', function(e, data){
 	stompClient.send('/app/removeSong', {}, JSON.stringify({id: song.id}));

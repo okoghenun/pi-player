@@ -61,6 +61,7 @@ ClientStore.prototype.save = function(filename, content, mimeType){
       fileWriter.onwriteend = function(e) {
         // Update the file browser.
         self.getList();
+				console.log(filename + ' saved.');
       };
 
       fileWriter.onerror = function(e) {
