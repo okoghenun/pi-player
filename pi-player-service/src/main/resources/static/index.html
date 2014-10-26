@@ -5,7 +5,6 @@
     <script src="sockjs-0.3.4.js"></script>
     <script src="stomp.js"></script>
     <script type="text/javascript">
-    
         var stompClient = null;
         
         function setConnected(connected) {
@@ -17,24 +16,20 @@
         
         function connect() {
             var socket = new SockJS('/hello');
-            socket.onopen = function() { console.log('sockjs: open'); };
-            socket.onmessage = function(e) { console.log('sockjs.message', e.data); };
-            socket.onclose = function() { console.log('sockjs.close'); };
-            
-            stompClient = Stomp.over(socket);     
+            stompClient = Stomp.over(socket);            
             stompClient.connect({}, function(frame) {
                 setConnected(true);
                 console.log('Connected: ' + frame);
                 stompClient.subscribe('/player/greetings', function(greeting){
                     showGreeting(JSON.parse(greeting.body).content);
                 });
-                stompClient.subscribe('/player/addSong', function(greeting){
+                stompClient.subscribe('/player/songAdded', function(greeting){
                     showGreeting(JSON.parse(greeting.body).content);
                 });
-                stompClient.subscribe('/player/stopCurrent', function(greeting){
+                stompClient.subscribe('/player/songStopped', function(greeting){
                     showGreeting(JSON.parse(greeting.body).content);
                 });
-                stompClient.subscribe('/player/pauseCurrent', function(greeting){
+                stompClient.subscribe('/player/songPaused', function(greeting){
                     showGreeting(JSON.parse(greeting.body).content);
                 });
             });
@@ -52,10 +47,10 @@
         }
 
         function stopSong() {
-            stompClient.send("/app/stop", {}, JSON.stringify({ 'name': name }));
+            stompClient.send("/app/stopSong", {}, JSON.stringify({ 'name': name }));
         }
         function pauseSong() {
-            stompClient.send("/app/pause", {}, JSON.stringify({ 'name': 'name' }));
+            stompClient.send("/app/pauseSong", {}, JSON.stringify({ 'name': 'name' }));
         }
 
         function addSong() {
@@ -94,6 +89,12 @@
         <button id="addSong" onclick="addSong();">Add</button>
     </div>
     <p id="response"></p>
+    
+    <form action="/songs/upload" enctype='multipart/form-data' method="POST">
+    	<input type="file" name="file"/>
+    	<input type="hidden" name="name"/ value="file-name">
+    	<input type="submit" value="Upload"/>
+    </form>
 </div>
 </body>
 </html>

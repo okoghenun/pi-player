@@ -1,0 +1,21 @@
+{
+  "name": "pi-player",
+  "version": "0.0.1",
+  "homepage": "https://github.com/okoghenun/pi-player",
+  "authors": [
+    "Constance Okoghenun <talktoconstance@yahoo.com>"
+  ],
+  "description": "Crowd-sourced music player",
+  "license": "CC0 1.0 Universal",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "foundation": "zurb/bower-foundation#~5.4.6"
+  }
+}

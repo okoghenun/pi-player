@@ -15,6 +15,7 @@ public class Song implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
+	private String songId;
 	private String name;
 	private int status;
 	private int priority;
@@ -40,7 +41,7 @@ public class Song implements Serializable {
 	    this.fileSize = 0; 
 	}
 	
-	public Song(String name,String filePath, String username, String playListName,String album,String artist,String year,String genre, double duration ){
+	public Song(String name,String filePath, String username, String playListName,String album,String artist,String year,String genre, double duration,String songId){
 		this.name=name;
 		this.filePath = filePath;
 		this.username = username;
@@ -54,9 +55,20 @@ public class Song implements Serializable {
 	    this.year = year;
 	    this.genre = genre;
 	    this.duration = duration;
+	    this.songId = songId;
 	}
 	
 	
+	
+	
+	public String getSongId() {
+		return songId;
+	}
+
+	public void setSongId(String songId) {
+		this.songId = songId;
+	}
+
 	public String getAlbum() {
 		return album;
 	}

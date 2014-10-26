@@ -1,4 +1,4 @@
-package com.iflx.pi.player.model;
+package com.iflx.pi.player.message;
 
 public class HelloMessage {
 	 private String name;
