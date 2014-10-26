@@ -3,32 +3,36 @@ var socket = new SockJS(url);
 stompClient = Stomp.over(socket);            
 stompClient.connect({}, function(frame) {
 	stompClient.subscribe('/player/songAdded', function(data){
-		console.log(data);
-		return JSON.parse(data.body).content;
+		var result = JSON.parse(data.body); 
+		return result.content;
 	});
 	stompClient.subscribe('/player/songRemoved', function(data){
-		console.log(data);
-		return JSON.parse(data.body).content;
+		var result = JSON.parse(data.body); 
+		return result.content;
 	});
 	stompClient.subscribe('/player/clientDisconnected', function(data){
-		console.log(data);
-		return JSON.parse(data.body).content;
+		var result = JSON.parse(data.body); 
+		return result.content;
 	});
 	stompClient.subscribe('/player/uploadSong', function(data){
-		console.log(data);
-		return JSON.parse(data.body).content;
+		var result = JSON.parse(data.body);
+		var uploadData = new FormData();
+		uploadData.append('id', result.songID);
+		uploadData.append('file', curPlaylist.getSong(result.songID));
+		$.post('songs/upload', uploadData);
+		return result.content;
 	});
 	stompClient.subscribe('/player/songPlaying', function(data){
-		console.log(data);
-		return JSON.parse(data.body).content;
+		var result = JSON.parse(data.body); 
+		return result.content;
 	});
 	stompClient.subscribe('/player/songPaused', function(data){
-		console.log(data);
-		return JSON.parse(data.body).content;
+		var result = JSON.parse(data.body); 
+		return result.content;
 	});
 	stompClient.subscribe('/player/songStopped', function(data){
-		console.log(data);
-		return JSON.parse(data.body).content;
+		var result = JSON.parse(data.body); 
+		return result.content;
 	});
 	
 	
