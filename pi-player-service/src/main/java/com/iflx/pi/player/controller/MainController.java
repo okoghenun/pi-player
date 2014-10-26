@@ -34,11 +34,17 @@ public class MainController {
 		player.pause();
         return new Greeting("current song paused");
     }
+	@MessageMapping("/resumeSong")
+    @SendTo("/player/songResume")
+    public Greeting resume(HelloMessage message) throws Exception {
+		player.resume();
+        return new Greeting("current song paused");
+    }
 	
 	@MessageMapping("/stopSong")
     @SendTo("/player/songStopped")
     public Greeting stop(HelloMessage message) throws Exception {
-		player.resume();
+		player.stop();
         return new Greeting("Current song stopped");
     }
 	
@@ -57,14 +63,8 @@ public class MainController {
 		if(playingSongs.count() < 5 ){
 			//ask user to upload the song
 		}
-		//broadcast event to all connected users
-	/*	try{
-			player.open(new File("141429035067104-Umbrella-Beach.mp3"));
-			player.play();
-		}catch(BasicPlayerException e){
-			e.printStackTrace();
-			return new Greeting(e.getMessage());
-		}*/
         return message;
     }
+	
+	
 }
