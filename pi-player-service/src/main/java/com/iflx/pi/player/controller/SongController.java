@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,8 +19,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.iflx.pi.player.model.PlayListState;
 import com.iflx.pi.player.model.PlayingSong;
 import com.iflx.pi.player.model.Song;
+import com.iflx.pi.player.model.User;
 import com.iflx.pi.player.repository.PlayingSongsRepository;
 import com.iflx.pi.player.repository.SongRepository;
+import com.iflx.pi.player.repository.UserRepository;
 import com.iflx.pi.player.util.PiPlayer;
 
 @RequestMapping("/songs")
@@ -31,19 +35,27 @@ public class SongController {
 	SongRepository songRepository;
 	@Autowired
 	PlayingSongsRepository playingSongs;
+	@Autowired
+	UserRepository userRepository;
 
 	@RequestMapping("/index")
-	public PlayListState index() {
+	public PlayListState index(HttpServletRequest request) {
+		 final String userIpAddress = request.getRemoteAddr();
+		 User user = userRepository.findByUsername(userIpAddress);
+		 if(user == null){
+			 userRepository.save(new User(userIpAddress,"password","user"));
+		 }
 		// capture details of user making request
 		// save details if user doesn't currently exist
 		// fetch all songs in play list
 		// return user id along side list of songs
+		 //add user to db
 		Iterable<Song> songs = songRepository.findAll();
 		PlayingSong currentSong = playingSongs.findByCurrent(1);
 		PlayListState currentState = new PlayListState();
 		currentState.setSongs(songs);
 		if (currentSong != null) {
-			currentState.setCurrentSongId(currentSong.getClientSongId());
+			currentState.setCurrentSongID(currentSong.getClientSongId());
 		}
 		if (player.isPlaying()) {
 			currentState.setIsPlaying(1);
@@ -56,7 +68,7 @@ public class SongController {
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public @ResponseBody String handleFileUpload(
-			@RequestParam("song-id") String songId,
+			@RequestParam("id") String songId,
 			@RequestParam("file") MultipartFile file) {
 		if (!file.isEmpty()) {
 			try {
@@ -69,6 +81,8 @@ public class SongController {
 						new FileOutputStream(new File(fileName)));
 				stream.write(bytes);
 				stream.close();
+				
+				
 				Song song = songRepository.findBySongId(songId);
 				song.setFilePath(fileName);
 				songRepository.save(song);
@@ -76,20 +90,21 @@ public class SongController {
 				long playListLength = playingSongs.count();
 				if (playListLength == 0) {
 					// add song to play list and play
-					playingSongs.save(new PlayingSong(song.getId(), song
+					playingSongs.save(new PlayingSong(1l, song
 							.getFilePath(), (int) playListLength + 1, 1, song
 							.getSongId()));
 					player.open(new File(fileName));
 					player.play();
-				} else if (playListLength < 5) {
+				} else{
 					// simply add to play list
-					playingSongs.save(new PlayingSong(song.getId(), song
+					playingSongs.save(new PlayingSong(1l, song
 							.getFilePath(), (int) playListLength + 1, 0, song
 							.getSongId()));
 				}
 				return "You successfully uploaded " + songId + " into "
 						+ songId + "-uploaded !";
 			} catch (Exception e) {
+				
 				return "You failed to upload " + songId + " => "
 						+ e.getMessage();
 			}

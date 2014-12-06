@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.stereotype.Service;
 
+import com.iflx.pi.player.message.ProgressEvent;
+import com.iflx.pi.player.message.SongEvent;
+
 @Service
 public class UploadService {
 	
@@ -16,8 +19,14 @@ public class UploadService {
 		this.messagingTemplate = messagingTemplate;
 	}
 	
-	public void sendUploadPing(Principal principal){
-		this.messagingTemplate.convertAndSendToUser(principal.getName(), "/queue/uploadSong", "please upload with id 12344");
+	public void sendPlayPing(SongEvent event){
+		this.messagingTemplate.convertAndSend("/player/songPlaying",event );
 	}
+	
+	public void sendProgressUpdate(ProgressEvent event){
+		this.messagingTemplate.convertAndSend("/player/songProgress",event );
+	}
+	
+	
 
 }
