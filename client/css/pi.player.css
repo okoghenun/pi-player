@@ -10000,6 +10000,8 @@ th.hide-for-touch {
   background-position: center center;
   height: inherit;
   position: relative;
+  -webkit-box-shadow: 0px 4px 23px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 4px 23px rgba(0, 0, 0, 0.7);
 }
 
 .pi-player:before {
