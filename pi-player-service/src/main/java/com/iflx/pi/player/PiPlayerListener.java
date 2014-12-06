@@ -27,7 +27,8 @@ public class PiPlayerListener implements BasicPlayerListener {
 	}
 
 	@Override
-	public void stateUpdated(BasicPlayerEvent arg0) {
+	public void stateUpdated(BasicPlayerEvent event) {
+
 		// TODO Auto-generated method stub
 		
 	}

@@ -1,8 +1,11 @@
-var url = 'http://192.168.43.49:8080/hello';
+//var base = 'http://192.168.43.49:8080';
+var base = '';
+var url = base + '/hello';
 var socket = new SockJS(url);
 
-$.getJSON('http://192.168.43.49:8080/songs/index', function(data){
+$.getJSON(base + '/songs/index', function(data){
 	console.log(data);
+	curPlaylist = new Playlist(data);
 });
 
 stompClient = Stomp.over(socket);            
@@ -10,15 +13,8 @@ stompClient.connect({}, function(frame) {
 	stompClient.subscribe('/player/songAdded', function(data){
 		var result = JSON.parse(data.body);
 		console.log(result);
-		var getDuration = function(duration){
-			var dWhole = Math.floor(result.duration / 60);
-			var dRem = '' + Math.round(((result.duration/60) - dWhole)*60);
-			dRem = (dRem.length<2)? '0' + dRem: dRem;
-			return dWhole + ':' + dRem;
-		}
-		result.duration = getDuration(result.duration);
-//		return result.content;
-		$('.song').last().after(render('<li class="song row"><span class="small-4 columns song-title ellipsis">{title}</span><span class="small-4 columns song-length text-center">{duration}</span><span class="small-4 columns song-artist ellipsis">{artist}</span></li>', result));
+		
+		curPlaylist.addSong(new Song(result));
 	});
 	stompClient.subscribe('/player/songRemoved', function(data){
 		var result = JSON.parse(data.body); 
@@ -71,10 +67,15 @@ $.subscribe('addedSong', function(e, data){
 	var song = new Song(data.files[0], function(){
 		console.log(this.toJSON());
 		stompClient.send('/app/addSong', {}, JSON.stringify(this.toJSON()));
+		var uploadData = new FormData();
+		uploadData.append('id', this.id);
+		uploadData.append('file', this.file);
+		$.post(base + 'songs/upload', uploadData);
+		
 	});
 //	var song = new Song(data.file);
 });
-$.subscribe('removedSong', function(e, data){
+$.subscribe('removeSong', function(e, data){
 	stompClient.send('/app/removeSong', {}, JSON.stringify({id: song.id}));
 });
 $.subscribe('playCurrent', function(e, data){
@@ -97,3 +98,12 @@ $.subscribe('reorderPlaylist', function(e, data){
 });
 //socket.emit('getPlaylist', {});
 
+
+
+$addButton.on('change', function(e){
+	$.publish('addedSong', {files: e.target.files});
+});
+
+$listContainer.on('click', '.remove-item', function(e){
+	$.publish('removeSong', {songID: $(this).data('id')});
+});
