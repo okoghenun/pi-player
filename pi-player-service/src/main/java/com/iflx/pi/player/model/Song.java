@@ -13,8 +13,7 @@ public class Song implements Serializable {
 	protected Song(){}
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
+	private String id;
 	private String songId;
 	private String name;
 	private int status;
@@ -28,7 +27,8 @@ public class Song implements Serializable {
 	private String artist;
 	private String year;
 	private String genre;
-	private double duration;
+	private String duration;
+	private String title;
 	
 	public Song(String name,String filePath, String username, String playListName ){
 		this.name=name;
@@ -39,9 +39,10 @@ public class Song implements Serializable {
 	    this.priority = 1;
 	    this.imagePath = null;
 	    this.fileSize = 0; 
+	    this.title = name;
 	}
 	
-	public Song(String name,String filePath, String username, String playListName,String album,String artist,String year,String genre, double duration,String songId){
+	public Song(String name,String filePath, String username, String playListName,String album,String artist,String year,String genre, String duration,String songId){
 		this.name=name;
 		this.filePath = filePath;
 		this.username = username;
@@ -55,12 +56,29 @@ public class Song implements Serializable {
 	    this.year = year;
 	    this.genre = genre;
 	    this.duration = duration;
+	    this.id = songId;
+	    this.title = name;
 	    this.songId = songId;
 	}
 	
 	
 	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	public String getSongId() {
 		return songId;
 	}
@@ -101,13 +119,13 @@ public class Song implements Serializable {
 		this.genre = genre;
 	}
 
-	public double getDuration() {
+	public String getDuration() {
 		return duration;
 	}
 
 
 
-	public void setDuration(double duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 
@@ -118,14 +136,6 @@ public class Song implements Serializable {
 
 	public void setPlayListName(String playListName) {
 		this.playListName = playListName;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -187,7 +197,7 @@ public class Song implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Song [id=" + id + ", name=" + name + ", status=" + status
+		return "Song [ name=" + name + ", status=" + status
 				+ ", priority=" + priority + ", filePath=" + filePath
 				+ ", imagePath=" + imagePath + ", fileSize=" + fileSize
 				+ ", username=" + username + ", playListName=" + playListName

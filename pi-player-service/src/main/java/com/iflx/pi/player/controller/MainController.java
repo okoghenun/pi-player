@@ -12,8 +12,12 @@ import org.springframework.messaging.handler.annotation.SendTo;
 
 import com.iflx.pi.player.message.AddSongMessage;
 import com.iflx.pi.player.message.HelloMessage;
+import com.iflx.pi.player.message.SongEvent;
 import com.iflx.pi.player.model.Greeting;
+import com.iflx.pi.player.model.PlayingSong;
+import com.iflx.pi.player.model.Song;
 import com.iflx.pi.player.repository.PlayingSongsRepository;
+import com.iflx.pi.player.repository.SongRepository;
 import com.iflx.pi.player.util.PiPlayer;
 
 @Controller
@@ -21,6 +25,8 @@ public class MainController {
 
 	@Autowired PiPlayer player;
 	@Autowired PlayingSongsRepository playingSongs;
+	@Autowired
+	SongRepository songRepository;
 	
 	@MessageMapping("/hello")
     @SendTo("/player/greetings")
@@ -30,15 +36,24 @@ public class MainController {
 
 	@MessageMapping("/pauseSong")
     @SendTo("/player/songPaused")
-    public Greeting pause(HelloMessage message) throws Exception {
+    public SongEvent pause() throws Exception {
 		player.pause();
-        return new Greeting("current song paused");
+		PlayingSong currentSong = playingSongs.findByCurrent(1);
+		SongEvent songEvent = new SongEvent();
+		songEvent.setIsPlaying(0);
+		songEvent.setSongId(currentSong.getClientSongId());
+		return songEvent;
     }
 	@MessageMapping("/resumeSong")
     @SendTo("/player/songResume")
-    public Greeting resume(HelloMessage message) throws Exception {
+    public SongEvent resume() throws Exception {
 		player.resume();
-        return new Greeting("current song paused");
+		PlayingSong currentSong = playingSongs.findByCurrent(1);
+		SongEvent songEvent = new SongEvent();
+		songEvent.setIsPlaying(1);
+		songEvent.setSongId(currentSong.getClientSongId());
+		return songEvent;
+		
     }
 	
 	@MessageMapping("/stopSong")
@@ -62,8 +77,35 @@ public class MainController {
 		//check if playlist is empty
 		if(playingSongs.count() < 5 ){
 			//ask user to upload the song
-		}
+		}	
+		Song song = new Song(message.getTitle(),"","admin","CCHUB-SAT-JAM",message.getAlbum(),message.getArtist(),message.getYear(),message.getGenre(),message.getDuration(),message.getId());
+		songRepository.save(song);
+		
         return message;
+    }
+	
+	@MessageMapping("/playSong")
+    @SendTo("/player/songPlaying")
+    public SongEvent PlaySong() {
+		PlayingSong currentSong = playingSongs.findByCurrent(1);
+		SongEvent songEvent = new SongEvent();
+		if(currentSong!= null){
+			songEvent.setIsPlaying(1);
+			songEvent.setSongId(currentSong.getClientSongId());
+			try{
+				player.open(new File(currentSong.getFilePath()));
+				player.play();
+			}catch(BasicPlayerException e){
+				e.printStackTrace();
+				songEvent.setIsPlaying(0);
+				return songEvent;
+				
+			}
+			
+		}
+		return songEvent;
+		
+		
     }
 	
 	

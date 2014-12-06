@@ -7,5 +7,6 @@ import com.iflx.pi.player.model.PlayingSong;
 
 public interface PlayingSongsRepository extends CrudRepository<PlayingSong, Long>{
 	PlayingSong findByCurrent(int current);
+	PlayingSong findByIndexInList(int current);
 
 }

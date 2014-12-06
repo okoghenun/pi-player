@@ -1,0 +1,117 @@
+.now-playing{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+
+  .artist-details{
+    background-color: #25202b;
+    background-color: rgba(37, 32, 43, 0.83);
+    padding-top: rem-calc(15);
+    padding-bottom: rem-calc(15);
+  }
+
+  .song-details{
+    .album-art img{
+      width: 80px;
+      height: 80px;
+      @media #{$small-only} {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+
+  .song-details,
+  .artist-name,
+  .album-details{
+    .title{
+      color: $font-color;
+      font-weight: 500;
+      font-size: rem-calc(14);
+      margin-bottom: 0;
+    }
+    .detail{
+      margin-bottom: 0;
+      line-height: 1.4;
+      font-size: rem-calc(12);
+      font-weight: 300;
+    }
+  }
+
+@media #{$medium-up} {
+  .artist-name,
+  .album-details,
+  .song-title{
+    padding-top: rem-calc(40);
+  }
+  .song-title{
+    padding-left: 0;
+  }
+}
+
+
+  .progressbar{
+    position: relative;
+    .progress{
+      padding: 0;
+      background-color: #373634;
+      border: none;
+      margin-bottom: 0;
+
+      .meter{
+        background: $player-orange;
+      }
+      .current-time,
+      .song-time{
+        position: absolute;
+        position: absolute;
+        top: 3px;
+        font-size: 11px;
+      }
+
+      .song-time{
+        right: 12px;
+      }
+
+      .current-time{
+        left: 12px;
+      }
+    }
+  }
+  .playlist-controls{
+    background-color: $gray-color;
+    color: $dark-color;
+    padding-top: rem-calc(15);
+    padding-bottom: rem-calc(15);
+
+    p, li{
+      margin-bottom: 0;
+      line-height: 1.4;
+      padding-bottom: 0;
+    }
+
+    ul.controls{
+      padding: 0
+    }
+    .playlist-action{
+      font-size: 80%;
+      text-transform: uppercase;
+      padding-top: rem-calc(15);
+      display: inline-block;
+    }
+    a{
+      color: $dark-color;
+
+      &:hover, &:focus{
+        color: $player-orange;
+      }
+    }
+
+    .control{
+      font-size: rem-calc(35);
+    }
+  }
+}

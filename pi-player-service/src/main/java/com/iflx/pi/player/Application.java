@@ -49,22 +49,7 @@ public class Application {
     	
     	playListRepository.save(new PlayList("CCHUB-SAT-JAM","CCHUB Saturday Jam","admin"));
     	
-    	songRepository.save(new Song("Song admin 1","filepath","admin","CCHUB-SAT-JAM"));
-    	songRepository.save(new Song("Song admin 2","filepath","admin","CCHUB-SAT-JAM"));
-    	songRepository.save(new Song("Song admin 3","filepath","admin","CCHUB-SAT-JAM"));
-    	
-    	songRepository.save(new Song("Song user 1","filepath","user","CCHUB-SAT-JAM"));
-    	songRepository.save(new Song("Song user 1","filepath","user","CCHUB-SAT-JAM"));
-    	songRepository.save(new Song("Song user 1","filepath","user","CCHUB-SAT-JAM"));
-    	
-    	
-    	// fetch all customers
-        List<Song> songs = songRepository.findByPlayListName("CCHUB-SAT-JAM");
-        System.out.println("Songs in CCHUB-SAT-JAM:");
-        System.out.println("-------------------------------");
-        for (Song song : songs) {
-            System.out.println(song);
-        }
+    	System.out.println(">>>>>>>>>>>>SYSTEM INITIALIZED>>>>>>>");
        
     	
     }

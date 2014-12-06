@@ -2,7 +2,7 @@ package com.iflx.pi.player.model;
 
 public class PlayListState {
 	private Iterable<Song> songs;
-	private String currentSongId;
+	private String currentSongID;
 	private int isPlaying;
 	
 	public Iterable<Song> getSongs() {
@@ -11,11 +11,11 @@ public class PlayListState {
 	public void setSongs(Iterable<Song> songs) {
 		this.songs = songs;
 	}
-	public String getCurrentSongId() {
-		return currentSongId;
+	public String getCurrentSongID() {
+		return currentSongID;
 	}
-	public void setCurrentSongId(String currentSongId) {
-		this.currentSongId = currentSongId;
+	public void setCurrentSongID(String currentSongId) {
+		this.currentSongID = currentSongId;
 	}
 	public int getIsPlaying() {
 		return isPlaying;
